@@ -8,6 +8,7 @@ int make_choice()
               << "0.Quit the program" << std::endl
               << "1.Save in File."    << std::endl
               << "2.Read from file"   << std::endl
+              << "3.Empty Container"  << std::endl
             << std::endl << "Enter your choice: ";
     std::cin >> choice;
     return choice;
@@ -32,6 +33,10 @@ int main()
             else if (choice == 2)
             {
                 read_points(PATH, pointsVec);
+            }
+            else if (choice == 3)
+            {
+                pointsVec.clear();
             }
             else
             {

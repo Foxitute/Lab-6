@@ -1,6 +1,6 @@
 #include "WorkWithFiles.h"
 #include <algorithm>
-bool zero_vector(std::vector<Point>& pointsVec)
+bool is_zero_vector(std::vector<Point>& pointsVec)
 {
     for (auto& point : pointsVec)
     {
@@ -18,7 +18,7 @@ void save_points(std::string& PATH, std::vector<Point>& pointsVec)
         throw std::exception("ERROR! Cannot open file for writing!\n");
     }
 
-    if (zero_vector(pointsVec))
+    if (is_zero_vector(pointsVec))
     {
         size_t SIZE;
         std::cout << std::endl << "How many Points do YOU want to save?" << std::endl;
@@ -41,7 +41,7 @@ void save_points(std::string& PATH, std::vector<Point>& pointsVec)
               << std::endl << std::endl;
 }
 
-void read_points(std::string& PATH, std::vector<Point>& pointsVec)
+std::vector<Point>& read_points(std::string& PATH, std::vector<Point>& pointsVec)
 {
     std::fstream fs(PATH, std::fstream::in); // ::in - open file for reading
     if (!fs.is_open())
@@ -55,8 +55,10 @@ void read_points(std::string& PATH, std::vector<Point>& pointsVec)
         if (fs.eof())
             break;
         std::cout << tmp << std::endl;
+        pointsVec.push_back(tmp);
     }
     fs.close();
     std::cout << std::endl << "Vector successfully readed!"
               << std::endl << std::endl;
+    return pointsVec;
 }
