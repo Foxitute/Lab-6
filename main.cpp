@@ -19,7 +19,7 @@ int main()
     setlocale(LC_ALL, "ru-RU");
     
     std::vector<Point> pointsVec;
-    std::string PATH = "poits.txt";
+    std::string PATH = "points.txt";
     int choice = make_choice();
 
     while (choice != 0)

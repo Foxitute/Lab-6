@@ -1,18 +1,20 @@
 #include "WorkWithFiles.h"
 #include <algorithm>
-bool is_zero_vector(std::vector<Point>& pointsVec)
-{
-    for (auto& point : pointsVec)
+#include <fstream>
+
+bool is_zero_vector(std::vector<Point>& pointsVec) // return true if at least
+{                                                  // one Point has not zero values
+    std::for_each(pointsVec.begin(), pointsVec.end(), [](const Point& point) 
     {
-        if (point != 0)            
+        if (point != 0)
             return false;
-    }
+    });        
     return true;
 }
 
 void save_points(std::string& PATH, std::vector<Point>& pointsVec)
-{
-    std::fstream fs(PATH, std::fstream::out | std::fstream::app); // ::out | ::app - open file for writing at the eof
+{   // ::out | ::app - open file for writing at the eof
+    std::fstream fs(PATH, std::fstream::out | std::fstream::app); 
     if (!fs.is_open())
     {
         throw std::exception("ERROR! Cannot open file for writing!\n");

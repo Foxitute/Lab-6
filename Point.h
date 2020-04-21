@@ -1,8 +1,6 @@
 #pragma once
 #include <iostream>
-#include <fstream>
 #include <vector>
-#include <stack>
 
 class Point
 {
@@ -19,7 +17,9 @@ public:
     Point& operator = (const Point& other);
     ~Point();
 
+    bool operator == (int value) const;
     bool operator == (int value);
+    bool operator != (int value) const;
     bool operator != (int value);
 
     friend std::ostream& operator << (std::ostream& os, const Point& point);

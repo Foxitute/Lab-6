@@ -1,4 +1,5 @@
 #include "Point.h"
+#include <stack>
 
 namespace
 {
@@ -37,9 +38,19 @@ Point::~Point()
 }
 
 
+bool Point::operator==(int value) const
+{
+    return this->_x == value && this->_y == value && this->_z == value;
+}
+
 bool Point::operator == (int value)
 {
     return this->_x == value && this->_y == value && this->_z == value;
+}
+
+bool Point::operator!=(int value) const
+{
+	return !(*this == value);
 }
 
 bool Point::operator != (int value)
